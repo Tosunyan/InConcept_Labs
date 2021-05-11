@@ -1,0 +1,139 @@
+{
+  "screens": [
+    {
+      "name": "Splash screen",
+      "enabled": false,
+      "backgroundColor": "00FF00",
+      "contentDescription": "Hi, this is a sample App"
+    },
+    {
+      "name": "Main",
+      "backgroundColor": "9a0007",
+      "type": "list",
+      "content": {
+        "items": [
+          {
+            "title": "item1",
+            "navigateTo": "destination6",
+            "description": "describing item 1 -> destination6"
+          },
+          {
+            "title": "item2",
+            "navigateTo": "destination6",
+            "description": "describing item 2 -> destination6"
+          },
+          {
+            "title": "item3",
+            "navigateTo": "destination5",
+            "description": "describing item 3 -> destination5"
+          },
+          {
+            "title": "item4",
+            "navigateTo": "destination4",
+            "description": "describing item 4 -> destination4"
+          },
+          {
+            "title": "item5",
+            "navigateTo": "destination4",
+            "description": "describing item 5 -> destination4"
+          },
+          {
+            "title": "item6",
+            "navigateTo": "destination2",
+            "description": "describing item 6 -> destination2"
+          },
+          {
+            "title": "item7",
+            "navigateTo": "destination1",
+            "description": "describing item 7 -> destination1"
+          },
+          {
+            "title": "item8",
+            "navigateTo": "destination2",
+            "description": "describing item 8 -> destination2"
+          },
+          {
+            "title": "item9",
+            "navigateTo": "destination2",
+            "description": "describing item 9 -> destination2"
+          },
+          {
+            "title": "item10",
+            "navigateTo": "destination2",
+            "description": "describing item 10 -> destination2"
+          },
+          {
+            "title": "item11",
+            "navigateTo": "destination2",
+            "description": "describing item 11 -> destination2"
+          },
+          {
+            "title": "item12",
+            "navigateTo": "destination4",
+            "description": "describing item 12 -> destination4"
+          },
+          {
+            "title": "item13",
+            "navigateTo": "destination1",
+            "description": "describing item 13 -> destination1"
+          },
+          {
+            "title": "item14",
+            "navigateTo": "destination2",
+            "description": "describing item 14 -> destination2"
+          },
+          {
+            "title": "item15",
+            "navigateTo": "destination1",
+            "description": "describing item 15 -> destination1"
+          },
+          {
+            "title": "item16",
+            "navigateTo": "destination3",
+            "description": "describing item 16 -> destination3"
+          },
+          {
+            "title": "item17",
+            "navigateTo": "destination3",
+            "description": "describing item 17 -> destination3"
+          },
+          {
+            "title": "item18",
+            "navigateTo": "destination3",
+            "description": "describing item 18 -> destination3"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Destination 1",
+      "backgroundColor": "FF6347",
+      "contentDescription": "In destination1. Well done!"
+    },
+    {
+      "name": "Destination 2",
+      "backgroundColor": "FF7F50",
+      "contentDescription": "In destination2. Well done!"
+    },
+    {
+      "name": "Destination 3",
+      "backgroundColor": "00FF00",
+      "contentDescription": "In destination3. Well done!"
+    },
+    {
+      "name": "Destination 4",
+      "backgroundColor": "FF6347",
+      "contentDescription": "In destination4. Well done!"
+    },
+    {
+      "name": "Destination 5",
+      "backgroundColor": "00FF00",
+      "contentDescription": "In destination5. Well done!"
+    },
+    {
+      "name": "Destination 6",
+      "backgroundColor": "FF6347",
+      "contentDescription": "In destination6. Well done!"
+    }
+  ]
+}

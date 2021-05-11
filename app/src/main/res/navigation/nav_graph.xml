@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    tools:ignore="InvalidNavigation">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.inconceptlabs.task.fragments.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/fromSplashToMain"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.inconceptlabs.task.fragments.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/activity_main">
+
+        <action
+            android:id="@+id/fromMainToDestination"
+            app:destination="@id/destinationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/destinationFragment"
+        android:name="com.inconceptlabs.task.fragments.DestinationFragment"
+        android:label="Destination1Fragment"
+        tools:layout="@layout/fragment_destination" >
+        <argument
+            android:name="index"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>
