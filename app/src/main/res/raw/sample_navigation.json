@@ -2,7 +2,7 @@
   "screens": [
     {
       "name": "Splash screen",
-      "enabled": false,
+      "enabled": true,
       "backgroundColor": "00FF00",
       "contentDescription": "Hi, this is a sample App"
     },

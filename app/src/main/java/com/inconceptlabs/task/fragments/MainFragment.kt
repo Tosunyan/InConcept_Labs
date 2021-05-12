@@ -3,9 +3,8 @@ package com.inconceptlabs.task.fragments
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +25,13 @@ class MainFragment : Fragment(R.layout.fragment_main), ItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         init(view)
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    activity?.finishAffinity()
+                }
+            })
     }
 
     private fun init(view: View) = view.apply {
@@ -51,7 +57,7 @@ class MainFragment : Fragment(R.layout.fragment_main), ItemClickListener {
     }
 
     override fun onItemClick(destination: String) {
-        when(destination) {
+        when (destination) {
             "destination1" -> findNavController(recyclerView).navigate(fromMainToDestination(2))
             "destination2" -> findNavController(recyclerView).navigate(fromMainToDestination(3))
             "destination3" -> findNavController(recyclerView).navigate(fromMainToDestination(4))

@@ -2,9 +2,11 @@ package com.inconceptlabs.task.fragments
 
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.widget.RelativeLayout
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 import com.inconceptlabs.task.R
@@ -13,21 +15,20 @@ import com.inconceptlabs.task.utility.BACKGROUND_COLOR
 import com.inconceptlabs.task.utility.CONTENT_DESCRIPTION
 import com.inconceptlabs.task.utility.NAME
 import com.inconceptlabs.task.utility.getJsonObject
-import java.util.*
 
 class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     private lateinit var textView: AppCompatTextView
-    private lateinit var rootLayout: LinearLayoutCompat
+    private lateinit var rootLayout: RelativeLayout
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         init(view)
 
-        Timer().schedule(object : TimerTask() {
-            override fun run() = findNavController(view).navigate(fromSplashToMain())
-        }, 1500)
+        Handler(Looper.getMainLooper()).postDelayed({
+            findNavController(view).navigate(fromSplashToMain())
+        }, 3000)
     }
 
     private fun init(view: View) = view.apply {

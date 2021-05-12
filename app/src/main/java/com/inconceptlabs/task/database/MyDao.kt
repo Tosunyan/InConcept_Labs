@@ -5,8 +5,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.inconceptlabs.task.models.Item
-import com.inconceptlabs.task.models.Screen
+import com.inconceptlabs.task.database.entities.Item
+import com.inconceptlabs.task.database.entities.Screen
 
 @Dao
 interface MyDao {
@@ -15,7 +15,7 @@ interface MyDao {
     suspend fun insertScreen(screen: Screen)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertItems(items: Item)
+    suspend fun insertItem(item: Item)
 
 
     @Query("SELECT * FROM Screen")

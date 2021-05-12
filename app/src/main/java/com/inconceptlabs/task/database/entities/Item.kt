@@ -1,4 +1,4 @@
-package com.inconceptlabs.task.models
+package com.inconceptlabs.task.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -10,5 +10,5 @@ data class Item(
     val description: String
 ) {
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 1
+    var itemID: Int = 1
 }

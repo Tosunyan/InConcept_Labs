@@ -2,8 +2,8 @@ package com.inconceptlabs.task.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.inconceptlabs.task.models.Item
-import com.inconceptlabs.task.models.Screen
+import com.inconceptlabs.task.database.entities.Item
+import com.inconceptlabs.task.database.entities.Screen
 import com.inconceptlabs.task.repositories.DatabaseRepository
 
 class ViewModel(application: Application) : AndroidViewModel(application) {
