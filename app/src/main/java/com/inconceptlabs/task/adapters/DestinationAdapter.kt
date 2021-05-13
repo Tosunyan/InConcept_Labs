@@ -7,30 +7,24 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.inconceptlabs.task.R
 import com.inconceptlabs.task.adapters.DestinationAdapter.DestinationViewHolder
-import com.inconceptlabs.task.utility.*
-import org.json.JSONObject
+import com.inconceptlabs.task.database.entities.Item
 
 class DestinationAdapter(
-    private val destinations: ArrayList<Any>,
+    private val items: List<Item>,
     val itemClickListener: ItemClickListener
 ) : RecyclerView.Adapter<DestinationViewHolder>() {
 
-    private lateinit var jsonObject: JSONObject
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DestinationViewHolder {
-        jsonObject = getJsonObject(parent.context, 1).getJSONObject(CONTENT)
-        return DestinationViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DestinationViewHolder =
+        DestinationViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.destination_item, parent, false)
         )
-    }
 
     override fun onBindViewHolder(holder: DestinationViewHolder, position: Int) {
-        holder.title.text = jsonObject.getJSONArray(ITEMS).getJSONObject(position).getString(TITLE)
-        holder.description.text =
-            jsonObject.getJSONArray(ITEMS).getJSONObject(position).getString(DESCRIPTION)
+        holder.title.text = items[position].title
+        holder.description.text = items[position].description
     }
 
-    override fun getItemCount() = destinations.size
+    override fun getItemCount() = items.size
 
     inner class DestinationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: AppCompatTextView = itemView.findViewById(R.id.item_title)
@@ -38,7 +32,7 @@ class DestinationAdapter(
 
         init {
             itemView.setOnClickListener {
-                itemClickListener.onItemClick(jsonObject.getJSONArray(ITEMS).getJSONObject(adapterPosition).getString(NAVIGATE_TO))
+                itemClickListener.onItemClick(items[adapterPosition].navigateTo)
                 itemView.performHapticFeedback(1)
             }
         }

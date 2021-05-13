@@ -1,23 +1,20 @@
 package com.inconceptlabs.task.fragments
 
-import android.graphics.Color
+import android.graphics.Color.parseColor
 import android.os.Bundle
 import android.view.View
 import android.widget.RelativeLayout
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.inconceptlabs.task.R
-import com.inconceptlabs.task.utility.BACKGROUND_COLOR
-import com.inconceptlabs.task.utility.CONTENT_DESCRIPTION
-import com.inconceptlabs.task.utility.NAME
-import com.inconceptlabs.task.utility.getJsonObject
-import org.json.JSONObject
+import com.inconceptlabs.task.viewmodels.ViewModel
 
 class DestinationFragment : Fragment(R.layout.fragment_destination) {
 
     private lateinit var description: AppCompatTextView
     private lateinit var layout: RelativeLayout
-    private lateinit var jsonObject: JSONObject
+    private val viewModel by viewModels<ViewModel>()
     private var index: Int = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,10 +28,11 @@ class DestinationFragment : Fragment(R.layout.fragment_destination) {
         layout = findViewById(R.id.destination_root)
 
         index = DestinationFragmentArgs.fromBundle(requireArguments()).index
-        jsonObject = getJsonObject(context, index)
 
-        activity?.title = jsonObject.getString(NAME)
-        description.text = jsonObject.getString(CONTENT_DESCRIPTION)
-        layout.setBackgroundColor(Color.parseColor("#" + jsonObject.getString(BACKGROUND_COLOR)))
+        viewModel.getAllScreens().observe(viewLifecycleOwner, { screens ->
+            activity?.title = screens[index].name
+            description.text = screens[index].contentDescription
+            layout.setBackgroundColor(parseColor("#" + screens[index].backgroundColor))
+        })
     }
 }

@@ -1,10 +1,11 @@
 package com.inconceptlabs.task.fragments
 
-import android.graphics.Color
+import android.graphics.Color.parseColor
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,19 +15,19 @@ import com.inconceptlabs.task.adapters.DestinationAdapter
 import com.inconceptlabs.task.adapters.DestinationAdapter.ItemClickListener
 import com.inconceptlabs.task.fragments.MainFragmentDirections.fromMainToDestination
 import com.inconceptlabs.task.utility.*
-import org.json.JSONObject
+import com.inconceptlabs.task.viewmodels.ViewModel
 
 class MainFragment : Fragment(R.layout.fragment_main), ItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var jsonObject: JSONObject
+    private val viewModel by viewModels<ViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         init(view)
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     activity?.finishAffinity()
@@ -36,24 +37,16 @@ class MainFragment : Fragment(R.layout.fragment_main), ItemClickListener {
 
     private fun init(view: View) = view.apply {
         recyclerView = findViewById(R.id.destination_list)
-        jsonObject = getJsonObject(requireContext(), 1)
 
-        activity?.title = jsonObject.getString(NAME)
-        recyclerView.setBackgroundColor(Color.parseColor("#" + jsonObject.getString(BACKGROUND_COLOR)))
+        viewModel.getAllScreens().observe(viewLifecycleOwner, { screens ->
+            activity?.title = screens[1].name
+            recyclerView.setBackgroundColor(parseColor("#" + screens[1].backgroundColor))
 
-        recyclerView.adapter = DestinationAdapter(addToArrayList(), this@MainFragment)
-        recyclerView.layoutManager = if (jsonObject.getString("type") == "list")
-            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        else GridLayoutManager(context, 2)
-    }
-
-    private fun addToArrayList(): ArrayList<Any> {
-        val list = ArrayList<Any>()
-
-        for (i in 0 until jsonObject.getJSONObject(CONTENT).getJSONArray(ITEMS).length())
-            list.add(jsonObject.getJSONObject(CONTENT).getJSONArray(ITEMS).get(i))
-
-        return list
+            recyclerView.adapter = DestinationAdapter(screens[1].content!!, this@MainFragment)
+            recyclerView.layoutManager = if (screens[1].type == "list")
+                LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            else GridLayoutManager(context, 2)
+        })
     }
 
     override fun onItemClick(destination: String) {

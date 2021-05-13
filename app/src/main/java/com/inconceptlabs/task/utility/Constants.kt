@@ -1,38 +1,18 @@
 package com.inconceptlabs.task.utility
 
-import android.content.Context
-import com.inconceptlabs.task.R
-import org.json.JSONArray
-import org.json.JSONObject
-
-const val DATABASE_NAME = "MyDatabase"
+const val DATABASE_NAME = "MyDatabase.db"
 const val IS_FIRST_TIME = "isFirstTime"
 
 const val SCREENS = "screens"
-const val NAME = "name"
-const val TITLE = "title"
-const val CONTENT = "content"
 const val ITEMS = "items"
-const val DESCRIPTION = "description"
-const val NAVIGATE_TO = "navigateTo"
+
+const val NAME = "name"
+const val BACKGROUND_COLOR = "backgroundColor"
+const val CONTENT_DESCRIPTION = "contentDescription"
 const val ENABLED = "enabled"
 const val TYPE = "type"
-const val CONTENT_DESCRIPTION = "contentDescription"
-const val BACKGROUND_COLOR = "backgroundColor"
+const val CONTENT = "content"
 
-fun getJsonObject(context: Context, index: Int): JSONObject {
-    val json = context.resources.openRawResource(R.raw.sample_navigation)
-        .bufferedReader().use { it.readText() }
-
-    return JSONObject(json)
-        .getJSONArray(SCREENS)
-        .getJSONObject(index)
-}
-
-fun getJsonArray(context: Context): JSONArray {
-    val json = context.resources.openRawResource(R.raw.sample_navigation)
-        .bufferedReader().use { it.readText() }
-
-    return JSONObject(json)
-        .getJSONArray(SCREENS)
-}
+const val TITLE = "title"
+const val NAVIGATE_TO = "navigateTo"
+const val DESCRIPTION = "description"
