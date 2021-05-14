@@ -12,7 +12,7 @@
         android:theme="@style/Theme.InConceptLabs"
         tools:ignore="AllowBackup">
 
-        <activity android:name=".activities.MainActivity">
+        <activity android:name="com.inconceptlabs.task.ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

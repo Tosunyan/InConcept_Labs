@@ -1,15 +1,15 @@
-package com.inconceptlabs.task.database
+package com.inconceptlabs.task.data.database
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
-import com.inconceptlabs.task.database.entities.Item
+import com.inconceptlabs.task.data.entities.Item
 
 class Converters {
     @TypeConverter
-    fun listToJson(value: List<Item>): String =
+    fun listToJson(value: List<Item>?): String? =
         Gson().toJson(value)
 
     @TypeConverter
-    fun jsonToList(value: String) =
+    fun jsonToList(value: String): List<Item> =
         Gson().fromJson(value, Array<Item>::class.java).toList()
 }

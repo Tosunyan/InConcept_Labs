@@ -1,8 +1,7 @@
 <resources>
 
-    <style name="Theme.InConceptLabs" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="Theme.InConceptLabs" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
     </style>
 
 </resources>

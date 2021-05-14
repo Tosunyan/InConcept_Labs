@@ -1,4 +1,4 @@
-package com.inconceptlabs.task.adapters
+package com.inconceptlabs.task.data.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.inconceptlabs.task.R
-import com.inconceptlabs.task.adapters.DestinationAdapter.DestinationViewHolder
-import com.inconceptlabs.task.database.entities.Item
+import com.inconceptlabs.task.data.adapters.DestinationAdapter.DestinationViewHolder
+import com.inconceptlabs.task.data.entities.Item
 
 class DestinationAdapter(
     private val items: List<Item>,

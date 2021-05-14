@@ -7,34 +7,42 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.inconceptlabs.task.fragments.SplashFragment"
+        android:name="com.inconceptlabs.task.ui.fragments.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash">
 
         <action
             android:id="@+id/fromSplashToMain"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.inconceptlabs.task.fragments.MainFragment"
+        android:name="com.inconceptlabs.task.ui.fragments.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/activity_main">
 
         <action
             android:id="@+id/fromMainToDestination"
-            app:destination="@id/destinationFragment" />
+            app:destination="@id/destinationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
         android:id="@+id/destinationFragment"
-        android:name="com.inconceptlabs.task.fragments.DestinationFragment"
+        android:name="com.inconceptlabs.task.ui.fragments.DestinationFragment"
         android:label="Destination1Fragment"
-        tools:layout="@layout/fragment_destination" >
-        <argument
-            android:name="index"
-            app:argType="integer" />
-    </fragment>
+        tools:layout="@layout/fragment_destination">
 
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
 </navigation>

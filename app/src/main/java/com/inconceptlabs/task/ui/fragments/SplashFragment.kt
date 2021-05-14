@@ -1,4 +1,4 @@
-package com.inconceptlabs.task.fragments
+package com.inconceptlabs.task.ui.fragments
 
 import android.graphics.Color.parseColor
 import android.os.Bundle
@@ -11,14 +11,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
 import com.inconceptlabs.task.R
-import com.inconceptlabs.task.fragments.SplashFragmentDirections.fromSplashToMain
-import com.inconceptlabs.task.viewmodels.ViewModel
+import com.inconceptlabs.task.ui.fragments.SplashFragmentDirections.fromSplashToMain
+import com.inconceptlabs.task.data.viewmodels.ViewModel
+import com.inconceptlabs.task.utility.SPLASH
 
 class SplashFragment : Fragment(R.layout.fragment_splash) {
 
+    private val viewModel by viewModels<ViewModel>()
     private lateinit var textView: AppCompatTextView
     private lateinit var rootLayout: RelativeLayout
-    private val viewModel by viewModels<ViewModel>()
+    private lateinit var title: AppCompatTextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,11 +35,12 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     private fun init(view: View) = view.apply {
         rootLayout = findViewById(R.id.root_layout)
         textView = findViewById(R.id.splash_description)
+        title = findViewById(R.id.splash_title)
 
-        viewModel.getAllScreens().observe(viewLifecycleOwner, { screens ->
-            activity?.title = screens[0].name
-            textView.text = screens[0].contentDescription
-            rootLayout.setBackgroundColor(parseColor("#" + screens[0].backgroundColor))
+        viewModel.getScreenWithName(SPLASH).observe(viewLifecycleOwner, { screen ->
+            title.text = screen.name
+            textView.text = screen.contentDescription
+            rootLayout.setBackgroundColor(parseColor("#" + screen.backgroundColor))
         })
     }
 }
