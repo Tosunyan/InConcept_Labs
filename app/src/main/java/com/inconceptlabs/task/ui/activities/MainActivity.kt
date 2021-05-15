@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-supportActionBar
+
         prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         graph = navHostFragment.navController.navInflater.inflate(R.navigation.nav_graph)

@@ -17,7 +17,7 @@ class DestinationFragment : Fragment(R.layout.fragment_destination) {
     private val viewModel by viewModels<ViewModel>()
     private lateinit var description: AppCompatTextView
     private lateinit var title: AppCompatTextView
-    private lateinit var icBack: AppCompatImageView
+    private lateinit var btnBack: AppCompatImageView
     private lateinit var layout: RelativeLayout
     private lateinit var name: String
 
@@ -30,13 +30,10 @@ class DestinationFragment : Fragment(R.layout.fragment_destination) {
     private fun init(view: View) = view.apply {
         description = findViewById(R.id.tv_destination)
         layout = findViewById(R.id.destination_root)
-        title = findViewById(R.id.destination_title)
-        icBack = findViewById(R.id.ic_back)
+        title = requireActivity().findViewById(R.id.tv_title)
+        btnBack = requireActivity().findViewById(R.id.btn_back)
 
-        icBack.setOnClickListener {
-            Navigation.findNavController(view).navigateUp()
-            performHapticFeedback(1)
-        }
+        btnBack.setOnClickListener { Navigation.findNavController(view).navigateUp() }
 
         name = DestinationFragmentArgs.fromBundle(requireArguments()).name
 

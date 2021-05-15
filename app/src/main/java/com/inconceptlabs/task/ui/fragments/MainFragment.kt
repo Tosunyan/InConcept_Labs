@@ -23,7 +23,7 @@ class MainFragment : Fragment(R.layout.fragment_main), ItemClickListener {
 
     private val viewModel by viewModels<ViewModel>()
     private lateinit var title: AppCompatTextView
-    private lateinit var exitIcon: AppCompatImageView
+    private lateinit var btnBack: AppCompatImageView
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: DestinationAdapter
 
@@ -36,8 +36,10 @@ class MainFragment : Fragment(R.layout.fragment_main), ItemClickListener {
 
     private fun init(view: View) = view.apply {
         recyclerView = findViewById(R.id.destination_list)
-        exitIcon = findViewById(R.id.ic_exit)
-        title = findViewById(R.id.main_title)
+        btnBack = requireActivity().findViewById(R.id.btn_back)
+        title = requireActivity().findViewById(R.id.tv_title)
+
+        btnBack.visibility = View.VISIBLE
 
         viewModel.getScreenWithName(MAIN).observe(viewLifecycleOwner, { screen ->
             title.text = screen.name
@@ -63,10 +65,7 @@ class MainFragment : Fragment(R.layout.fragment_main), ItemClickListener {
     }
 
     private fun onClick() {
-        exitIcon.setOnClickListener {
-            activity?.finishAffinity()
-            exitIcon.performHapticFeedback(1)
-        }
+        btnBack.setOnClickListener { activity?.finishAffinity() }
 
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner,
             object : OnBackPressedCallback(true) {

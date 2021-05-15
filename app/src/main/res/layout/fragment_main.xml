@@ -1,46 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.recyclerview.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/destination_list"
     android:layout_width="match_parent"
-    android:id="@+id/main_root"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@color/colorPrimaryDark">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:id="@+id/ic_exit"
-            android:background="?actionBarItemBackground"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="20dp"
-            app:srcCompat="@drawable/ic_exit"
-            app:tint="#EAEAEA" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/main_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="10dp"
-            android:textColor="#EAEAEA"
-            android:textSize="18sp" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/destination_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:padding="8dp"
-        tools:listitem="@layout/destination_item" />
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+    android:clipToPadding="false"
+    android:overScrollMode="never"
+    android:padding="8dp"
+    tools:listitem="@layout/destination_item" />

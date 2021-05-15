@@ -3,7 +3,7 @@
     {
       "name": "Splash screen",
       "enabled": true,
-      "backgroundColor": "00FF00",
+      "backgroundColor": "819CA9",
       "contentDescription": "Hi, this is a sample App"
     },
     {
@@ -107,32 +107,32 @@
     },
     {
       "name": "Destination 1",
-      "backgroundColor": "FF6347",
+      "backgroundColor": "FFAB00",
       "contentDescription": "In destination1. Well done!"
     },
     {
       "name": "Destination 2",
-      "backgroundColor": "FF7F50",
+      "backgroundColor": "DF78EF",
       "contentDescription": "In destination2. Well done!"
     },
     {
       "name": "Destination 3",
-      "backgroundColor": "00FF00",
+      "backgroundColor": "4F83CC",
       "contentDescription": "In destination3. Well done!"
     },
     {
       "name": "Destination 4",
-      "backgroundColor": "FF6347",
+      "backgroundColor": "60AD5E",
       "contentDescription": "In destination4. Well done!"
     },
     {
       "name": "Destination 5",
-      "backgroundColor": "00FF00",
+      "backgroundColor": "9C786C",
       "contentDescription": "In destination5. Well done!"
     },
     {
       "name": "Destination 6",
-      "backgroundColor": "FF6347",
+      "backgroundColor": "819CA9",
       "contentDescription": "In destination6. Well done!"
     }
   ]

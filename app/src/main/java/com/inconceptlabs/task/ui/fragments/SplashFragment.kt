@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.RelativeLayout
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,6 +22,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     private lateinit var textView: AppCompatTextView
     private lateinit var rootLayout: RelativeLayout
     private lateinit var title: AppCompatTextView
+    private lateinit var btnBack: AppCompatImageView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,7 +37,8 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     private fun init(view: View) = view.apply {
         rootLayout = findViewById(R.id.root_layout)
         textView = findViewById(R.id.splash_description)
-        title = findViewById(R.id.splash_title)
+        title = requireActivity().findViewById(R.id.tv_title)
+        btnBack = requireActivity().findViewById(R.id.btn_back)
 
         viewModel.getScreenWithName(SPLASH).observe(viewLifecycleOwner, { screen ->
             title.text = screen.name

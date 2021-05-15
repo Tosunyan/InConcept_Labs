@@ -31,10 +31,7 @@ class DestinationAdapter(
         val description: AppCompatTextView = itemView.findViewById(R.id.item_description)
 
         init {
-            itemView.setOnClickListener {
-                itemClickListener.onItemClick(items[adapterPosition].navigateTo)
-                itemView.performHapticFeedback(1)
-            }
+            itemView.setOnClickListener { itemClickListener.onItemClick(items[adapterPosition].navigateTo) }
         }
     }
 
